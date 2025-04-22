@@ -44,3 +44,143 @@ elif edad >= 18 and edad < 30:
 else:
     print("Adulto"); 
 
+#5) Escribir un programa que permita introducir contraseñas de entre 8 y 14 caracteres (incluyendo 8 y 14).
+#Si el usuario ingresa una contraseña de longitud adecuada, imprimir por en pantalla el mensaje "Ha ingresado una contraseña correcta"; 
+#en caso contrario, imprimir por pantalla "Por favor, ingrese una contraseña de entre 8 y 14 caracteres". Nota: investigue el uso de la función len()
+#en Python para evaluar la cantidad de elementos que tiene un iterable tal como una lista o un string.
+
+contraseña = input("Ingrese su contraseña, la misma debe tener entre 8 y 14 caracteres: "); 
+
+if 8 <= len(contraseña) <= 14:
+    print("Ha ingresado una contraseña correcta")
+else:
+    print("Por favor, ingrese una contraseña de entre 8 y 14 caracteres")
+
+
+#6 Teniendo en cuenta lo antes mencionado, escribir un programa que tome la lista numeros_aleatorios, 
+#calcule su moda, su mediana y su media y las compare para determinar si hay sesgo positivo, negativo o no hay sesgo.
+
+import random; 
+numeros_aleatorios = [random.randint(1, 100) for i in range(50)]; 
+
+from statistics import mode, median, mean;
+
+moda = mode(numeros_aleatorios);
+mediana = median(numeros_aleatorios);
+media = mean(numeros_aleatorios);
+
+print(f"El mode es {moda}, el median es {mediana}, y el mean es {media}");   
+
+if media > mediana and mediana > moda:
+    print("Hay sesgo Positivo");
+elif media < mediana and mediana < moda:
+    print("Hay sesgo negativo"); 
+elif moda == mediana == media:
+    print("No hay sesgo"); 
+
+#7) Escribir un programa que solicite una frase o palabra al usuario. Si el string ingresado termina con vocal, añadir un signo de exclamación al final
+#e imprimir el string resultante por pantalla; en caso contrario, dejar el string tal cual lo ingresó el usuario e imprimirlo por pantalla.
+
+frase = input("Porfavor ingrese una frase o palabra"); 
+final = frase[-1];
+# = ultima.lower(); 
+
+if final == "a" or final == "e" or final == "i" or final == "o" or final == "u":
+    print(f"{frase}+!")
+else: 
+    print(frase); 
+
+# 8) Escribir un programa que solicite al usuario que ingrese su nombre y el número 1, 2 o 3 dependiendo de la opción que desee: 
+# 1. Si quiere su nombre en mayúsculas. Por ejemplo: PEDRO. 
+# 2. Si quiere su nombre en minúsculas. Por ejemplo: pedro. 
+# 3. Si quiere su nombre con la primera letra mayúscula. Por ejemplo: Pedro. El programa debe transformar el nombre ingresado de acuerdo
+# a la opción seleccionada por el usuario e imprimir el resultado por pantalla. 
+#Nota: investigue uso de las funciones upper(), lower() y title() de Python para convertir entre mayúsculas y minúsculas. 
+
+nombre = input("Ingrese su nombre: "); 
+
+print("Ingrese 1 Si quiere su nombre en mayúsculas. Por ejemplo: PEDRO."); 
+print("Ingrese 2 Si quiere su nombre en minúsculas. Por ejemplo: pedro. "); 
+print("Ingrese 3 Si quiere su nombre con la primera letra mayúscula. Por ejemplo: Pedro.");
+
+valor = int(input("Ingrese el numero elegido: ")); 
+opcionUno = nombre.upper();
+opcionDos = nombre.lower();
+opcionTres = nombre.title(); 
+
+
+if valor == 1: 
+    print(opcionUno);
+elif valor == 2: 
+    print(opcionDos);
+elif valor == 3:
+    print(opcionTres);
+else:
+    print("Ingrese un nro valido");  
+
+#9) Escribir un programa que pida al usuario la magnitud de un terremoto, clasifique la magnitud en una de las siguientes categorías 
+# según la escala de Richter e imprima el resultado por pantalla: 
+# ● Menor que 3: "Muy leve" (imperceptible). 
+# ● Mayor o igual que 3  y menor que 4: "Leve" (ligeramente perceptible). 
+# ● Mayor o igual que 4  y menor que 5: "Moderado" (sentido por personas, pero generalmente no causa daños). 
+# ● Mayor o igual que 5  y menor que 6: "Fuerte" (puede causar daños en estructuras débiles). 
+# ● Mayor o igual que 6  y menor que 7: "Muy Fuerte" (puede causar daños significativos). 
+# ● Mayor o igual que 7: "Extremo" (puede causar graves daños a gran escala). 
+
+mgd = int(input("Ingrese la magnitud de un terremoto, y lo clasificaremos"));
+if mgd < 3:
+    print(' "Muy leve" (imperceptible).'); 
+
+elif mgd >= 3 and mgd < 4:
+    print('"Leve" (ligeramente perceptible).')
+
+elif mgd >= 4 and mgd < 5:
+    print('"Moderado" (sentido por personas, pero generalmente no causa daños).')
+
+elif mgd >= 5 and mgd < 6:
+    print('"Fuerte" (puede causar daños en estructuras débiles).')
+
+elif mgd >= 6 and mgd < 7:
+    print('"Muy Fuerte" (puede causar daños significativos).')
+elif mgd >= 7: 
+    print('"Extremo" (puede causar graves daños a gran escala).')
+
+# 10) Utilizando la información aportada en la siguiente tabla sobre las estaciones del año. *Tabla*
+# Escribir un programa que pregunte al usuario en cuál hemisferio se encuentra (N/S),qué mes del año es y qué día es.
+# El programa deberá utilizar esa información para imprimir por pantalla si el usuario se encuentra en otoño, invierno, primavera o verano.
+
+hemisferio = input("¿En qué hemisferio te encuentras? (N para Norte, S para Sur): ").strip.upper(); 
+
+dia = int(input("¿Que dia es hoy? podrias ingresar el numero porfavor")); 
+if dia <= 0 or dia > 31:
+    print("Ingrese una dia valido") 
+
+mes = int(input("¿En que mes estamos? ingresalo en nro porfavor"));
+if mes <= 0 or mes > 12:
+    print("Ingrese un mes valido"); 
+ 
+if hemisferio == "N":
+    if (mes == 12 and dia >= 21) or (1 <= mes <= 2) or (mes == 3 and dia < 20):
+        estacion = "invierno";
+    elif (mes == 3 and dia >= 20) or (4 <= mes <= 5) or (mes == 6 and dia < 21):
+        estacion = "primavera";
+    elif (mes == 6 and dia >= 21) or (7 <= mes <= 8) or (mes == 9 and dia < 23):
+        estacion = "verano";
+    elif (mes == 9 and dia >= 23) or (10 <= mes <= 11) or (mes == 12 and dia < 21):
+        estacion = "otoño";
+elif hemisferio == "S":
+    if (mes == 6 and dia >= 21) or (7 <= mes <= 8) or (mes == 9 and dia < 23):
+        estacion = "invierno";
+    elif (mes == 9 and dia >= 23) or (10 <= mes <= 11) or (mes == 12 and dia < 21):
+        estacion = "primavera";
+    elif (mes == 12 and dia >= 21) or (1 <= mes <= 2) or (mes == 3 and dia < 20):
+        estacion = "verano";
+    elif (mes == 3 and dia >= 20) or (4 <= mes <= 5) or (mes == 6 and dia < 21):
+        estacion = "otoño";
+else:
+    estacion = "desconocida";
+
+if estacion == "desconocida":
+    print("Hemisferio no válido.");
+else:
+    print(f"Estás en {estacion}."); 
