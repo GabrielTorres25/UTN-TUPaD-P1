@@ -28,8 +28,6 @@ for dni in dnis:
     for i in range(10):
         print(f"{i}: el numero aparece {frecuencia[i]} veces")
         
-
-
 # conjuntos de digitos unicos por DNI
 conjuntos_digitos = [set(dni) for dni in dnis]
 
@@ -63,3 +61,47 @@ def operaciones_conjuntos(conjuntos):
 # ejecutamos las funciones
 mostrar_digitos(conjuntos_digitos)
 operaciones_conjuntos(conjuntos_digitos)
+
+## Gabi Valdez
+# Función para verificar si un año es bisiesto
+def es_bisiesto(año):
+    return (año % 4 == 0 and año % 100 != 0) or (año % 400 == 0)
+
+# Ingreso de años de nacimiento
+años = []
+
+for i in range(3):
+    valido = False
+    while not valido:
+        try:
+            año = int(input(f"Ingrese el año de nacimiento del integrante {i+1}: "))
+            if año < 1900 or año > 2025:
+                print("Por favor ingrese un año válido entre 1900 y 2025.")
+            else:
+                años.append(año)
+                valido = True
+        except ValueError:
+            print("Por favor ingrese un número válido.")
+# Contar pares e impares
+pares = sum(1 for a in años if a % 2 == 0)
+impares = len(años) - pares
+print("////////////////////////////")
+print(f"Años pares: {pares} - Años impares: {impares}")
+
+# Grupo Z
+if all(a > 2000 for a in años):
+    print("Grupo Z")
+
+# Año especial (bisiesto)
+if any(es_bisiesto(a) for a in años):
+    print("Tenemos un año especial")
+
+# Calcular edades
+anios_actual = 2025
+edades = [anios_actual - a for a in años]
+
+# Producto cartesiano (año x edad)
+print("Producto cartesiano (año x edad):")
+for a in años:
+    for e in edades:
+        print((a, e))
