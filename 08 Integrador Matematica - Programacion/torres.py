@@ -35,8 +35,8 @@ conjuntos_digitos = [set(dni) for dni in dnis]
 def mostrar_digitos(conjuntos):
     print("////////////////////////////")
     print("Conjuntos de digitos unicos por DNI");
-    for i, conjunto in enumerate(conjuntos, 1):
-        print(f"DNI {i}: {sorted(conjunto)}"); # Mostrar ordenado
+    for i, conjunto in enumerate(conjuntos, 1):  
+        print(f"DNI {i}: {sorted(conjunto)}"); # mostramos ordenado
     print("////////////////////////////")
 # funcion con operaciones entre conjuntos de digitos
 def operaciones_conjuntos(conjuntos):
@@ -105,3 +105,27 @@ print("Producto cartesiano (año x edad):")
 for a in años:
     for e in edades:
         print((a, e))
+
+# ==========================
+# Evaluación de expresiones lógicas
+# ==========================
+
+print("////////////////////////////")
+print("Evaluación de expresiones lógicas")
+
+# Asignamos los conjuntos para las condiciones lógicas
+A, B, C = conjuntos_digitos
+
+# Expresión lógica 1: Alta diversidad
+if len(A) >= 5 and len(B) >= 5 and len(C) >= 5:
+    print("Alta diversidad numérica")
+else:
+    print("Diversidad numérica no suficiente")
+
+# Expresión lógica 2: Diferencias
+diferencia_A_B = A - B
+
+if diferencia_A_B:
+    print("Dígitos en A y no en B:", sorted(diferencia_A_B))
+else:
+    print("No hay dígitos en A que no estén en B")
