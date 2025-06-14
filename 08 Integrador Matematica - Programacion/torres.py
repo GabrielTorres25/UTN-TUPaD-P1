@@ -8,7 +8,7 @@ for i in range(3):  # 3 integrantes.
         if not dni.isdigit():
             print("Por favor ingresa solo numeros.");
         elif len(dni) < 7 or len(dni) > 9:
-            print("El DNI debe tener entre 7 y 9 digitos.");
+            print("Por favor, intenta nuevamente. El DNI debe tener entre 7 y 9 digitos.");
         else:
             dnis.append(dni);
             valido = True;
@@ -18,8 +18,8 @@ for dni in dnis:
     suma = 0
     frecuencia = [0] * 10  ## creamos una lista vacia con 10, 0.
     for digito in dni:      ## para registrar la frecuencia. 
-        frecuencia[int(digito)] += 1
-        suma += int(digito)
+        frecuencia[int(digito)] += 1 ## [0,0,0,0,0,0,0,0,0,0]
+        suma += int(digito)    
 
     print("////////////////////////////")
     print(f"DNI: {dni}")
@@ -126,6 +126,6 @@ else:
 diferencia_A_B = A - B
 
 if diferencia_A_B:
-    print("Dígitos en A y no en B:", sorted(diferencia_A_B))
+    print("Dígitos en A y no en B,:", sorted(diferencia_A_B))
 else:
     print("No hay dígitos en A que no estén en B")
